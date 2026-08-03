@@ -31,6 +31,7 @@ Aboutme
             align-items:center;
             position:sticky;
             top:0;
+            z-index:100;
         }
 
         nav a{
@@ -52,6 +53,17 @@ Aboutme
             text-align:center;
             flex-direction:column;
             padding:20px;
+        }
+
+        /* ===== รูปโปรไฟล์ ===== */
+        .hero .avatar{
+            width:150px;
+            height:150px;
+            border-radius:50%;
+            object-fit:cover;
+            border:4px solid #38bdf8;
+            margin-bottom:20px;
+            box-shadow:0 0 25px rgba(56,189,248,.4);
         }
 
         .hero h1{
@@ -77,6 +89,9 @@ Aboutme
             border-radius:8px;
             font-weight:bold;
             transition:.3s;
+            border:none;
+            cursor:pointer;
+            font-size:16px;
         }
 
         .btn:hover{
@@ -111,14 +126,38 @@ Aboutme
             padding:25px;
             border-radius:10px;
             transition:.3s;
+            overflow:hidden;
         }
 
         .card:hover{
             transform:translateY(-8px);
         }
 
+        /* ===== รูปภาพในการ์ดโปรเจกต์ ===== */
+        .card img{
+            width:100%;
+            height:160px;
+            object-fit:cover;
+            border-radius:8px;
+            margin-bottom:15px;
+            display:block;
+        }
+
         .card h3{
             margin-bottom:15px;
+        }
+
+        /* ===== การ์ด History ที่กดขยายได้ ===== */
+        .card.expandable{
+            cursor:pointer;
+        }
+
+        .card.expandable .more-hint{
+            display:inline-block;
+            margin-top:10px;
+            color:#38bdf8;
+            font-size:14px;
+            font-weight:bold;
         }
 
         .contact{
@@ -130,6 +169,74 @@ Aboutme
             padding:20px;
             background:#111827;
             color:#94a3b8;
+        }
+
+        /* ===== Modal ส่วนขยายประวัติ ===== */
+        .modal-overlay{
+            display:none;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,.7);
+            z-index:1000;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .modal-overlay.active{
+            display:flex;
+        }
+
+        .modal-box{
+            background:#1e293b;
+            max-width:600px;
+            width:100%;
+            border-radius:12px;
+            padding:35px;
+            position:relative;
+            max-height:85vh;
+            overflow-y:auto;
+        }
+
+        .modal-box img{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            object-fit:cover;
+            border:3px solid #38bdf8;
+            display:block;
+            margin:0 auto 20px;
+        }
+
+        .modal-box h3{
+            text-align:center;
+            margin-bottom:20px;
+            font-size:26px;
+            color:#38bdf8;
+        }
+
+        .modal-box p{
+            margin-bottom:12px;
+            color:#cbd5e1;
+        }
+
+        .modal-close{
+            position:absolute;
+            top:15px;
+            right:20px;
+            background:none;
+            border:none;
+            color:#fff;
+            font-size:26px;
+            cursor:pointer;
+            line-height:1;
+        }
+
+        .modal-close:hover{
+            color:#38bdf8;
         }
 
         @media(max-width:768px){
@@ -160,10 +267,13 @@ Aboutme
 </header>
 
 <section class="hero">
+    <!-- ใส่รูปโปรไฟล์ของคุณตรงนี้ เปลี่ยน src เป็นลิงก์รูปหรือไฟล์รูปของคุณ -->
+    <img class="avatar" src="https://via.placeholder.com/150" alt="รูปโปรไฟล์ของ Yutthawit">
+
     <h1>Hello, I'm <span>Yutthawit</span></h1>
     <p>
-        An odinary student who enjoys trveling,
-        love to talk with many people, and hardworking.
+        An ordinary student who enjoys traveling,
+        loves to talk with many people, and is hardworking.
     </p>
 
     <a href="#projects" class="btn">View My Work</a>
@@ -174,9 +284,9 @@ Aboutme
 
     <div class="about">
         <p>
-            I'm a student with experience in interact with many people from different country with english language while trying too learn their language aswell,
-            for example like English , Chinese, and Japanese.
-            I enjoy talking and exchange our oppinion, talk about daily life, and give each other a compliment or advice.
+            I'm a student with experience interacting with many people from different countries in English while trying to learn their language as well,
+            for example English, Chinese, and Japanese.
+            I enjoy talking and exchanging opinions, discussing daily life, and giving each other compliments or advice.
         </p>
     </div>
 </section>
@@ -186,17 +296,24 @@ Aboutme
 
     <div class="projects">
 
-        <div class="card">
+        <!-- การ์ด History: กดแล้วจะเปิดส่วนขยาย (modal) แสดงประวัติแบบเต็ม -->
+        <div class="card expandable" onclick="openHistoryModal()">
+            <img src="https://via.placeholder.com/300x160" alt="History">
             <h3>History</h3>
-            <p>My name is Yutthawit Mobandit. I am 18 years old. I live in </p>
+            <p>My name is Yutthawit Mobandit. I am 18 years old...</p>
+            <span class="more-hint">คลิกเพื่ออ่านเพิ่มเติม &raquo;</span>
         </div>
 
         <div class="card">
+            <!-- ใส่รูปโปรเจกต์ตรงนี้ -->
+            <img src="https://via.placeholder.com/300x160" alt="Weather App">
             <h3>Weather App</h3>
             <p>Weather application using an API with real-time forecasts.</p>
         </div>
 
         <div class="card">
+            <!-- ใส่รูปโปรเจกต์ตรงนี้ -->
+            <img src="https://via.placeholder.com/300x160" alt="To-Do App">
             <h3>To-Do App</h3>
             <p>A task management app with local storage support.</p>
         </div>
@@ -215,6 +332,50 @@ Aboutme
 </section>
 
 <footer>
+    <p>&copy; 2026 Yutthawit Mobandit. All rights reserved.</p>
+</footer>
+
+<!-- ===== Modal ส่วนขยายของ History ===== -->
+<div class="modal-overlay" id="historyModal" onclick="closeHistoryModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeHistoryModal()">&times;</button>
+        <img src="https://via.placeholder.com/120" alt="รูปประวัติ">
+        <h3>My History</h3>
+        <p>My name is Yutthawit Mobandit. I am 18 years old and I live in Bangkok, Thailand.</p>
+        <p>
+            I would describe myself as an ordinary student, but one who is genuinely curious
+            about the world around me. Traveling is one of my biggest passions — every new
+            place I visit teaches me something about how differently people live, think, and
+            connect with one another.
+        </p>
+        <p>
+            That same curiosity is what pushed me to learn languages beyond my own. Besides
+            English, I have been studying Chinese and Japanese, not just to speak them, but
+            to better understand the cultures behind them. I love striking up conversations
+            with people from different countries, exchanging opinions, talking about daily
+            life, and simply learning from one another.
+        </p>
+        <p>
+            I try to bring the same hardworking attitude into everything I do, whether it's
+            my studies or personal projects like this portfolio. Right now I'm focused on
+            building my skills in web development, and I'm excited to keep growing — both
+            as a student and as someone who genuinely enjoys connecting with people.
+        </p>
+    </div>
+</div>
+
+<script>
+    function openHistoryModal(){
+        document.getElementById('historyModal').classList.add('active');
+    }
+
+    function closeHistoryModal(e){
+        document.getElementById('historyModal').classList.remove('active');
+    }
+</script>
+
+</body>
+</html>
     © 2026 Your Name. All Rights Reserved.
 </footer>
 
