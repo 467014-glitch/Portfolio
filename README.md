@@ -376,8 +376,3 @@ Aboutme
 
 </body>
 </html>
-    © 2026 Your Name. All Rights Reserved.
-</footer>
-
-</body>
-</html>
