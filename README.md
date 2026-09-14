@@ -1,4 +1,4 @@
-# My Portfolio nattawat prayoowong m6/3 17
+# My Portfolio Yutthawit Mobandit M.6/3 Number 18
 
 <div align="center">
 
@@ -12,8 +12,5 @@
   <img src="portfolio/8.png" height="700" alt="Page 8"><br><br>
   <img src="portfolio/9.png" height="700" alt="Page 9"><br><br>
   <img src="portfolio/10.png" height="700" alt="Page 10"><br><br>
-  <img src="portfolio/11.png" height="700" alt="Page 11"><br><br>
-  <img src="portfolio/12.png" height="700" alt="Page 12"><br><br>
-  <img src="portfolio/13.png" height="700" alt="Page 13">
 
 </div>
